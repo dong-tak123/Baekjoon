@@ -178,23 +178,56 @@ N = int(input())
 
 #일단 15의 배수보다 크면 작도록 줄인다..
 num = 0
-while (N>=15):
-    num += 3
-    N -= 15
 
-if N % 3 == 0:
-    print(num + N//3)
-elif (N-5)%3 == 0:
-    print(num+1 + (N-5)//3)
-else:
-    print(-1)
-    """
-3 -> 3
-3+3 -> 6
-3+3+3 -> 9
-3+3+3+3 -> 12
-5+3 -> 8
-5+3+3 -> 11
-5+3+3+3-> 14
+if N % 5 == 0 :
+    print(N // 5)
+elif N % 3 == 0:
+
+"""기본수학 2"""
+
+point_x = {}
+point_y = {}
+
+for i in range(1, 4):
+    a, b = map(int, input().split())
+    if a in point_x:
+        point_x[a] += 1
+    else:
+        point_x[a] = 1
+    if b in point_y:
+        point_y[b] += 1
+    else:
+        point_y[b] = 1
+
+for i in point_x:
+    if point_x[i] == 1:
+        print(i, end=" ")
+        break
+for i in point_y:
+    if point_y[i] == 1:
+        print(i, end=" ")
+        break
+
 """
+a1, b1 = map(int, input().split())
+point_x[a1] = 1
+point_y[b1] = 1
+a2, b2 = map(int, input().split())
+if a2 in point_x:
+    point_x[a2] += 1
+else:
+    point_x[a2] = 1
+if b2 in point_y:
+    point_y[b2] += 1
+else:
+    point_y[b2] = 1
 
+a3, b3 = map(int, input().split())
+if a3 in point_x:
+    point_x[a3] += 1
+else:
+    point_x[a3] = 1
+if b3 in point_y:
+    point_y[b3] += 1
+else:
+    point_y[b3] = 1"""
