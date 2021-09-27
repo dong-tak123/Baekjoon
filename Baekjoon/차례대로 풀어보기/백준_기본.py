@@ -174,14 +174,21 @@ print(sum)
 
 """기본수학 1"""
 
+#2839
 N = int(input())
+box = 0
 
-#일단 15의 배수보다 크면 작도록 줄인다..
-num = 0
-
-if N % 5 == 0 :
-    print(N // 5)
-elif N % 3 == 0:
+#남은 설탕이 5의 배수가 될때까지 3을 뺀다..
+while N>=0:
+    if N%5 == 0:
+        box += N//5
+        break
+    N -= 3
+    box += 1
+if N%5 != 0:
+    print(-1)
+else:
+    print(box)
 
 """기본수학 2"""
 
@@ -208,26 +215,16 @@ for i in point_y:
         print(i, end=" ")
         break
 
-"""
-a1, b1 = map(int, input().split())
-point_x[a1] = 1
-point_y[b1] = 1
-a2, b2 = map(int, input().split())
-if a2 in point_x:
-    point_x[a2] += 1
-else:
-    point_x[a2] = 1
-if b2 in point_y:
-    point_y[b2] += 1
-else:
-    point_y[b2] = 1
+#4153
 
-a3, b3 = map(int, input().split())
-if a3 in point_x:
-    point_x[a3] += 1
-else:
-    point_x[a3] = 1
-if b3 in point_y:
-    point_y[b3] += 1
-else:
-    point_y[b3] = 1"""
+while True:
+    nums = list(map(int, input().split()))
+    if nums[0] == 0:
+        break
+    else:
+        nums.sort()
+        if nums[0]**2 + nums[1]**2 == nums[2]**2:
+            print("right")
+        else:
+            print("wrong")
+
