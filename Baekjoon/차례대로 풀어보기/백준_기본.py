@@ -228,3 +228,65 @@ while True:
         else:
             print("wrong")
 
+"""재귀"""
+
+#10872 팩토리얼
+
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+N = int(input())
+print(factorial(N))
+
+#2447 별찍기-10
+
+def star(N):
+    if N == 3:
+        
+
+N = int(input())
+
+#11729 하노이 탑 이동 순서
+
+"""브루트포스 알고리즘"""
+
+#2798 블랙잭
+
+from itertools import combinations
+N, M = map(int, input().split())
+cards = list(map(int, input().split()))
+cards.sort()
+
+nums = list(combinations(cards, 3))[::-1]
+wts = []
+for i in nums:
+    if sum(i) <= M:
+        wts.append(sum(i))
+print(max(wts))
+
+#2231 번 분해합
+
+N = int(input())
+
+x,y,z = 0,0,0
+while 101*x + 11*y + 2*z == N:
+
+#7568번 덩치
+
+N = int(input())
+
+id = []
+score = [1 for x in range(N)]
+for _ in range(N):
+    id.append(list(map(int, input().split())))
+
+for i in range(N):
+    for j in range(N):
+        if id[i][0] > id[j][0] and id[i][1] > id[j][1]:
+            score[j] += 1
+
+for k in score:
+    print(k, end=" ")
