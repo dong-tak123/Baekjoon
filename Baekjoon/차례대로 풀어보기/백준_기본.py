@@ -290,3 +290,74 @@ for i in range(N):
 
 for k in score:
     print(k, end=" ")
+
+"""백트래킹"""
+
+#15650 N과 M(2)
+
+from itertools import combinations
+
+N, M = map(int, input().split())
+nums = range(1, N+1)
+
+for i in list(combinations(nums, M)):
+    for j in i:
+        print(j, end=" ")
+    print()
+
+#15651 N과 M(3) itertools.product(, repeat=..)
+#중복순열..
+
+from itertools import product
+
+N, M = map(int, input().split())
+nums = range(1, N+1)
+
+for i in list(product(nums, repeat = M)):
+    for j in i:
+        print(j, end=" ")
+    print()
+
+#재귀 사용..
+
+N, M = map(int, input().split())
+
+numbers = []
+
+def NnM():
+    if len(numbers) == M:
+        print(" ".join(map(str, numbers)))
+        return
+    
+    for i in range(1, N+1):
+        numbers.append(i)
+        print(numbers)
+        NnM()
+        numbers.pop()
+NnM()
+
+#15652 N과 M(4)
+
+from itertools import combinations_with_replacement
+
+N, M = map(int, input().split())
+nums = range(1, N+1)
+for i in list(combinations_with_replacement(nums, M)):
+    for j in i:
+        print(j, end=" ")
+    print()
+
+N, M = map(int, input().split())
+numbers = []
+
+#다시 뽑을때 자기보다 큰걸 뽑아야한다.. 인자를 주면 됨!
+def NnM(k):
+    if len(numbers) == M:
+        print(' '.join(map(str, numbers)))
+        return
+    for i in range(k, N+1):
+        numbers.append(i)
+        NnM(i)
+        numbers.pop()
+NnM(1)
+
