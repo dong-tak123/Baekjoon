@@ -361,3 +361,44 @@ def NnM(k):
         numbers.pop()
 NnM(1)
 
+#14888 연산자 끼워넣기
+from itertools import permutations
+
+N = int(input())
+nums = list(map(int, input()))
+add, sub, mul, div = map(int, input())
+calcul = ["+" for _ in range(add)] + ["-" for _ in range(add)] +
+            ["*" for _ in range(add)] + ["/" for _ in range(add)]
+result = []
+
+for i in list(permutations(calcul, N-1)):
+    res = nums[0]
+    for j in range(N-1):
+        if i[j] == "+":
+            res += nums[j+1]
+        elif i[j] == "-":
+
+#14889 스타트와 링크
+from itertools import combinations
+
+N = int(input())
+chemy = []
+result = []
+for _ in range(N):
+    chemy.append(list(map(int, input().split())))
+
+member = range(N)
+#뽑히면 start라고 생각..
+for i in list(combinations(member, N//2)):
+    start = list(i)
+    link = list(set(member).difference(set(start)))
+    
+    start_sum, link_sum = 0, 0
+    for j in list(combinations(start, 2)):
+        start_sum += (chemy[j[0]][j[1]] + chemy[j[1]][j[0]]) 
+    for j in list(combinations(link, 2)):
+        link_sum += (chemy[j[0]][j[1]] + chemy[j[1]][j[0]])
+    result.append(abs(link_sum-start_sum))
+
+print(min(result))
+
