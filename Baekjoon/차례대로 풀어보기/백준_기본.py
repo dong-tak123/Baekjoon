@@ -267,12 +267,48 @@ for i in nums:
         wts.append(sum(i))
 print(max(wts))
 
-#2231 번 분해합
+#2231 분해합
+
+def making(N):
+    sum = N
+    for i in str(N):
+        sum += int(i)
+    return sum
 
 N = int(input())
+found = False
+initial = 1
+while initial < 1000001:
+    if making(initial) == N:
+        found = True
+        break
+    else:
+        initial += 1
+if found:
+    print(initial)
+else:
+    print(0)
 
-x,y,z = 0,0,0
-while 101*x + 11*y + 2*z == N:
+#2231 분해합
+#무지성으로 수식 계산.. (시간 개빠름..)
+
+n = int(input())
+
+def check():
+    for a1 in range(10):
+        for a2 in range(10):
+            for a3 in range(10):
+                for a4 in range(10):
+                    for a5 in range(10):
+                        for a6 in range(10):
+              #현재 상태의 분해합을 temp에 계산..
+temp = a1*100001+a2*10001+a3*1001+a4*101+a5*11+a6*2
+              #분해합이 같으면 리턴..
+              if temp == n:
+                return a1*100000+a2*10000+a3*1000+a4*100+a5*10+a6*1
+  return 0
+
+print(check())
 
 #7568번 덩치
 
@@ -401,4 +437,84 @@ for i in list(combinations(member, N//2)):
     result.append(abs(link_sum-start_sum))
 
 print(min(result))
+
+"""정수론 및 조합론"""
+
+#5086 배수와 약수
+
+def check(x, y):
+    if x % y == 0:
+        print("multiple")
+    elif y % x == 0:
+        print("factor")
+    else:
+        print("neither")
+
+while True:
+    a, b = map(int, input().split())
+    if a == 0:
+        break
+    check(a, b)
+
+#2981 검문
+
+N = int(input())
+nums = []
+for _ in range(N):
+    nums.append(int(input()))
+#정렬까지 마침..
+nums.sort()
+for k in range(nums[0]):
+
+#3036 링
+
+def gcd(a, b):
+    while (b>0):
+        a, b = b, a%b
+    return a
+
+def giyak(a, b):
+    GCD = gcd(a, b)
+    print(f"{a//GCD}/{b//GCD}")
+
+N = int(input())
+rings = list(map(int, input().split()))
+for i in range(1, N):
+    giyak(rings[0], rings[i])
+
+def gcd(a, b):
+    while (b>0):
+        a, b = b, a%b
+    return a
+
+gcd(21,15)
+
+#11050 이항 계수 1
+
+N, K = map(int, input().split())
+
+bunja = 1
+bunmo = 1
+for i in range(N, N-K, -1):
+    bunja *= i
+for i in range(1, K+1):
+    bunmo *= i
+
+print(bunja//bunmo)
+
+#11051 이항 계수 2
+
+N, K = map(int, input().split())
+
+bunja = 1
+bunmo = 1
+if K > N - K:
+    K = N - K
+
+for i in range(N, N-K, -1):
+    bunja *= i
+for i in range(1, K+1):
+    bunmo *= i
+
+print((bunja//bunmo)%10007)
 
